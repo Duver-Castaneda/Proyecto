@@ -24,19 +24,15 @@ function close() {
 
 import { computed } from 'vue'
 
-// Tipamos los valores posibles para la prop `size`
 type ModalSize = 'sm' | 'md' | 'ml' | 'lg'
 type ModalSizeHeight = 'Hsm' | 'Hmd' | 'Hml' | 'Hlg' | 'Hms'
-// Define props con tipos
+
 const props = defineProps<{
   sizeHeight?: ModalSizeHeight
   size?: ModalSize
   visible: Boolean
 }>()
 
-// Define props con tipos
-
-// Computed: Clase según tamaño
 const sizeClass = computed(() => {
   const sizeMap: Record<ModalSize, string> = {
     sm: 'modal-sm',

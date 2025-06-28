@@ -115,7 +115,28 @@
         </div>
         <div class="MedioDePago">
           <span class="spanPago">Medio de pago *</span>
-          <textarea name="" class="botonesDatos" placeholder="Seleccionar"></textarea>
+          <select name="" class="botonesDatos" placeholder="Seleccionar">
+            <option value="">Instrumento no definido</option>
+            <option value="">Efectivo</option>
+            <option value="">Transferencia debito</option>
+            <option value="">Consignacion bancaria</option>
+            <option value="">Credito ACH</option>
+            <option value="">Debito ACH</option>
+            <option value="">Reversion debito de demanda ACH</option>
+            <option value="">Reversion Credito de demanda ACH</option>
+            <option value="">Credito de demanda ACH</option>
+            <option value="">Debito de demanda ACH</option>
+            <option value="">Credito ahorro</option>
+            <option value="">Credito Debito</option>
+            <option value="">Bookentry credito</option>
+            <option value="">Bookentry debito</option>
+            <option value="">Concentracion de la demanda en efectivo/rembolso credito (CCD)</option>
+            <option value="">Concentracion de la demanda en efectivo/rembolso debito (CCD)</option>
+            <option value="">Credito pago negocio corporativo(CTP)</option>
+            <option value="">Cheque</option>
+            <option value="">Proyecto bancario</option>
+            <option value="">Proyecto bancario certificado</option>
+          </select>
         </div>
       </div>
     </div>

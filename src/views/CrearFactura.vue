@@ -184,6 +184,7 @@
         name=""
         class="textcomentarios"
         placeholder="Añadir comentarios, no se mostraran en la impresion"
+        maxlength="280"
       ></textarea>
     </div>
     <div class="emitir">
@@ -299,6 +300,10 @@ function toggleChulo2() {
 }
 </script>
 <style scoped>
+.LineaCm {
+  width: 100%;
+  border: 1px solid black;
+}
 .BotonChuleado {
   justify-content: center;
   align-items: center;
@@ -527,6 +532,7 @@ function toggleChulo2() {
   width: 100%;
   height: 70px;
 
+  padding: 10px;
   color: rgb(51, 65, 85);
   font-size: 14px;
   border: 1px solid rgb(226, 232, 240);

@@ -7,7 +7,21 @@
           >Administra las numeraciones de los documentos que generas en tu negocio</span
         >
         <span class="TipoDocumento">Tipo de documento</span>
-        <select name="" class="TipoDocumentoBoton"></select>
+        <select name="" class="TipoDocumentoBoton">
+          <option value="" class="Options">Factura De venta</option>
+          <option value="" class="Options">Documento equivalente P.O.S</option>
+          <option value="" class="Options">Nota Credito</option>
+          <option value="" class="Options">Nota Debito</option>
+          <option value="" class="Options">Recibo de caja</option>
+          <option value="" class="Options">Comprobante de egreso</option>
+          <option value="" class="Options">Cotizacion</option>
+          <option value="" class="Options">Orden de Compra</option>
+          <option value="" class="Options">Remision</option>
+          <option value="" class="Options">Documento Soporte</option>
+          <option value="" class="Options">Nota debito en ingresos</option>
+          <option value="" class="Options">Ajustes de inventario</option>
+          <option value="" class="Options">Nota de ajuste a doc. soporte</option>
+        </select>
       </div>
       <div>
         <button class="BotonNuevaNumeracion" @click="goToFormView2()">+ Nueva numeracion</button>
@@ -70,6 +84,10 @@ const goToFormView2 = () => {
 }
 </script>
 <style scoped>
+.Options {
+  padding: 6px 40px 6px 4px;
+  color: rgb(51, 65, 85);
+}
 .selectResultados {
   width: 50px;
   height: 20px;

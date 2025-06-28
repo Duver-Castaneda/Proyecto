@@ -173,10 +173,10 @@ function mostrarNombre(e) {
   max-height: 30px;
   font-size: 14px;
   border: 1px solid rgb(203, 213, 225);
-  overflow: hidden; /* lo que se sale del alto no se ve */
-  white-space: nowrap; /* que no haga salto de línea */
-  text-overflow: clip; /* o ellipsis si querés puntos suspensivos */
-  line-height: 30px; /* centrar texto si es de una línea */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+  line-height: 30px;
   border-radius: 5px;
   border-right: none;
 }
@@ -219,8 +219,8 @@ function mostrarNombre(e) {
 }
 .fila4 {
   display: flex;
-  justify-content: flex-start; /* Alinea todo a la derecha */
-  gap: 8px; /* Espacio entre elementos */
+  justify-content: flex-start;
+  gap: 8px;
   margin-bottom: 8px;
   width: 48%;
   background-color: white;
@@ -229,8 +229,8 @@ function mostrarNombre(e) {
 }
 .fila3 {
   display: flex;
-  justify-content: flex-start; /* Alinea todo a la derecha */
-  gap: 8px; /* Espacio entre elementos */
+  justify-content: flex-start;
+  gap: 8px;
   margin-bottom: 8px;
   width: 48%;
   background-color: rgb(248, 250, 252);
@@ -239,15 +239,15 @@ function mostrarNombre(e) {
 }
 .fila2 {
   display: flex;
-  justify-content: flex-start; /* Alinea todo a la derecha */
-  gap: 8px; /* Espacio entre elementos */
+  justify-content: flex-start;
+  gap: 8px;
   margin-bottom: 8px;
   width: 48%;
 }
 .fila {
   display: flex;
-  justify-content: flex-end; /* Alinea todo a la derecha */
-  gap: 8px; /* Espacio entre elementos */
+  justify-content: flex-end;
+  gap: 8px;
   margin-bottom: 8px;
   width: 48%;
 }

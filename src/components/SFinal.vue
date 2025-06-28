@@ -110,10 +110,9 @@ watch(selectedNuevaFirma, (nuevoValor08) => {
 interface ComponenteRemisionItem {
   id: number
 }
-// Array de componentes (reactivo y tipado)
+
 const componentesRemision = ref<ComponenteRemisionItem[]>([])
 
-// Contador de IDs
 let idCounter = 0
 function agregarComponenteRemision() {
   componentesRemision.value.push({ id: idCounter++ })
