@@ -37,7 +37,7 @@
         </button>
         <SModal v-model:visible="showNuevoContactoModal" sizeHeight="Hlg">
           <template #header>
-            <h3 class="TituloModal">Nuevo Contacto</h3>
+            <h3 class="TituloModal"></h3>
           </template>
 
           <template #body>
@@ -108,11 +108,47 @@
         </div>
         <div class="formaDePago">
           <span class="spanFormaDePago">Forma de pago *</span>
-          <select name="" class="botonesDatos">
-            <option value="">Contado</option>
-            <option value="">Creedito</option>
+          <select v-model="paymentWay" class="botonesDatos">
+            <option value="cash">Contado</option>
+            <option value="credit">Credito</option>
           </select>
         </div>
+        <div class="formaDePago" v-if="paymentWay === 'credit'">
+          <span class="spanFormaDePago">Plazo de contacto *</span>
+          <select class="botonesDatos" v-model="selectedPlazo">
+            <option value="">De contado</option>
+            <option value="">8</option>
+            <option value="">15</option>
+            <option value="">30</option>
+            <option value="">60</option>
+            <option value="NuevoPlazo">Nuevo plazo</option>
+          </select>
+        </div>
+        <SModal v-model:visible="showNuevoPlazoModal" sizeHeight="Hsm" size="md">
+          <template #header>
+            <h3 class="TituloModal">Agregar nuevo termino de pago</h3>
+          </template>
+
+          <template #body>
+            <div class="DivModalPrincipal">
+              <div style="display: flex">
+                <span style="display: flex">Nombres </span
+                ><select name="" id="" class="selectModalPlazo"></select>
+              </div>
+              <div style="display: flex">
+                <span style="display: flex">Dias</span>
+                <select name="" id="" class="selectModalPlazo"></select>
+              </div>
+            </div>
+          </template>
+
+          <template #ModalFinal>
+            <div class="modal-actions">
+              <button class="Buton1" @click="cerrarModalContacto()">Cancelar</button>
+              <button class="Buton2">Guardar</button>
+            </div></template
+          >
+        </SModal>
         <div class="MedioDePago">
           <span class="spanPago">Medio de pago *</span>
           <select name="" class="botonesDatos" placeholder="Seleccionar">
@@ -150,17 +186,43 @@ import { defineProps, defineEmits } from 'vue'
 
 const showNuevoContactoModal = ref(false)
 const selectedNuevoContacto = ref<string>('')
+const selectedplazo = ref<string | null>(null)
+const paymentWay = ref<string | null>(null)
+const showNuevoPlazoModal = ref(false)
+const selectedPlazo = ref<string>('')
+
+watch(selectedPlazo, (nuevoValor06) => {
+  if (nuevoValor06 === 'NuevoPlazo') {
+    showNuevoPlazoModal.value = true
+  }
+})
 function cerrarModalContacto() {
   showNuevoContactoModal.value = false
 }
-watch(selectedNuevoContacto, (nuevoValor04) => {
-  if (nuevoValor04 === 'nuevo04') {
-    showNuevoContactoModal.value = true
-  }
-})
+
 const warehouse = ref<string>('01')
 </script>
 <style scoped>
+.DivModalPrincipal {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.selectModalPlazo {
+  width: 200px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(203, 213, 225);
+  margin-left: 15px;
+}
+.TituloModal {
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  color: #30bbb7;
+  border-bottom: 1px solid rgb(229, 231, 235);
+  height: 35px;
+}
 .modal-actions {
   width: 100%;
 }
@@ -381,6 +443,7 @@ const warehouse = ref<string>('01')
 .spanPago,
 .spanFormaDePago {
   width: 145px;
+  color: rgb(107, 114, 128);
 }
 .fechas {
   width: 200px;
