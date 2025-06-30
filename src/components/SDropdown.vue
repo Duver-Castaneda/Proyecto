@@ -1,7 +1,9 @@
 <template>
   <div>
     <label class="label"> {{ label }}</label>
-    <VueSelect v-model="model" :options="options" />
+    <VueSelect v-model="model" :options="options">
+      <template #menu-header><slot name="before-options"></slot></template>
+    </VueSelect>
   </div>
 </template>
 

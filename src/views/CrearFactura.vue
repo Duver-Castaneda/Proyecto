@@ -26,11 +26,12 @@
         class="Bodega"
         v-model="selectedBodega"
         :label="'Bodega'"
-        :options="[
-          { text: 'General', code: '01' },
-          { text: 'Nueva bodega', code: 'nuevo02' },
-        ]"
-      />
+        :options="[{ text: 'General', code: '01' }]"
+      >
+        <template #before-options
+          ><SButton label="Nueva bodega" @click="showBodegaModal = true"
+        /></template>
+      </SDropdown>
 
       <SModal v-model:visible="showBodegaModal" size="md">
         <template #header>
@@ -73,11 +74,12 @@
         class="ListaPrecios"
         v-model="selectedLista"
         :label="'Lista de precios'"
-        :options="[
-          { text: 'General', code: '03' },
-          { text: 'Nueva Lista', code: 'nuevo01' },
-        ]"
-      />
+        :options="[{ text: 'General', code: '03' }]"
+      >
+        <template #before-options
+          ><SButton label="Nueva Lista" @click="showListaModal = true"
+        /></template>
+      </SDropdown>
 
       <SModal v-model:visible="showListaModal" size="ml" sizeHeight="Hms">
         <template #header>
@@ -117,9 +119,11 @@
         :options="[
           { text: '', code: '06' },
           { text: 'Vendedor', code: '05' },
-          { text: 'Nuevo vendedor', code: 'nuevo' },
         ]"
-      />
+      >
+        <template #before-options
+          ><SButton label="Nuevo Vendedor " @click="showVendedorModal = true" /></template
+      ></SDropdown>
       <SModal v-model:visible="showVendedorModal" size="ml">
         <template #header>
           <h3 class="TituloModal">Agregar nuevo vendedor</h3>
@@ -271,6 +275,7 @@ function agregarComponente() {
 }
 
 import { useRouter } from 'vue-router'
+import SButton from '@/components/SButton.vue'
 const router = useRouter()
 const goToFormViewHome = () => {
   router.push({ name: 'home' })
@@ -300,6 +305,10 @@ function toggleChulo2() {
 }
 </script>
 <style scoped>
+.NuevosModalesStyle {
+  color: rgb(0, 177, 157);
+  font-size: 12px;
+}
 .LineaCm {
   width: 100%;
   border: 1px solid black;

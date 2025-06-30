@@ -121,7 +121,7 @@
             <option value="">15</option>
             <option value="">30</option>
             <option value="">60</option>
-            <option value="NuevoPlazo">Nuevo plazo</option>
+            <option value="NuevoPlazo" class="NuevoPlazo">Nuevo plazo</option>
           </select>
         </div>
         <SModal v-model:visible="showNuevoPlazoModal" sizeHeight="Hsm" size="md">
@@ -131,12 +131,12 @@
 
           <template #body>
             <div class="DivModalPrincipal">
-              <div style="display: flex">
-                <span style="display: flex">Nombres </span
-                ><select name="" id="" class="selectModalPlazo"></select>
+              <div class="ColumnPlazo1">
+                <span style="display: block; text-align: right">Nombres *</span>
+                <span style="display: block; text-align: right">Dias *</span>
               </div>
-              <div style="display: flex">
-                <span style="display: flex">Dias</span>
+              <div class="ColumnPlazo2">
+                <select name="" id="" class="selectModalPlazo"></select>
                 <select name="" id="" class="selectModalPlazo"></select>
               </div>
             </div>
@@ -144,7 +144,7 @@
 
           <template #ModalFinal>
             <div class="modal-actions">
-              <button class="Buton1" @click="cerrarModalContacto()">Cancelar</button>
+              <button class="Buton1" @click="cerrarModalPlazo()">Cancelar</button>
               <button class="Buton2">Guardar</button>
             </div></template
           >
@@ -196,6 +196,11 @@ watch(selectedPlazo, (nuevoValor06) => {
     showNuevoPlazoModal.value = true
   }
 })
+
+function cerrarModalPlazo() {
+  showNuevoPlazoModal.value = false
+}
+
 function cerrarModalContacto() {
   showNuevoContactoModal.value = false
 }
@@ -203,17 +208,33 @@ function cerrarModalContacto() {
 const warehouse = ref<string>('01')
 </script>
 <style scoped>
+.NuevoPlazo {
+  color: rgb(0, 177, 157);
+  font-size: 12px;
+}
+.ColumnPlazo1 {
+  display: block;
+  justify-content: center;
+  width: 35%;
+}
+
+.ColumnPlazo2 {
+  display: block;
+  justify-content: center;
+}
 .DivModalPrincipal {
   display: flex;
-  flex-direction: column;
-  padding: 15px;
+  justify-content: space-between;
+  padding: 10px;
 }
 .selectModalPlazo {
   width: 200px;
   height: 20px;
   border-radius: 5px;
   border: 1px solid rgb(203, 213, 225);
-  margin-left: 15px;
+  margin-top: 5px;
+
+  display: block;
 }
 .TituloModal {
   display: block;
