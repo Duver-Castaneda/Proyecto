@@ -195,7 +195,7 @@
       <button class="Cancelar" @click="goToFormViewHome">Cancelar</button>
       <button class="VistaPrevia">Vista Previa</button>
       <button class="EmitirCrear">Emitir y crear nueva</button>
-      <button class="Emitir">Emitir</button>
+      <button class="Emitir" @click="goToFormView3()">Emitir</button>
     </div>
   </div>
 </template>
@@ -214,6 +214,11 @@ import SPago from '@/components/SPago.vue'
 const showVendedorModal = ref(false)
 const showListaModal = ref(false)
 const showBodegaModal = ref(false)
+
+const router2 = useRouter()
+const goToFormView3 = () => {
+  router2.push({ name: 'FacturaCreada' })
+}
 
 function cerrarModalVendedor() {
   showVendedorModal.value = false

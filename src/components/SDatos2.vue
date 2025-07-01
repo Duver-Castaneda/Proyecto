@@ -30,8 +30,8 @@
         </div>
         <button
           class="BotonContactoAgregar"
-          @click="selectedNuevoContacto = 'nuevo04'"
-          value="nuevo04"
+          @click="selectedNuevoContacto = 'NuevoContacto'"
+          value="NuevoContacto"
         >
           + Agregar contacto
         </button>
@@ -116,15 +116,25 @@
         <div class="formaDePago" v-if="paymentWay === 'credit'">
           <span class="spanFormaDePago">Plazo de contacto *</span>
           <select class="botonesDatos" v-model="selectedPlazo">
-            <option value="">De contado</option>
-            <option value="">8</option>
-            <option value="">15</option>
-            <option value="">30</option>
-            <option value="">60</option>
+            <option value="0">De contado</option>
+            <option value="8">8</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="60">60</option>
             <option value="NuevoPlazo" class="NuevoPlazo">Nuevo plazo</option>
           </select>
         </div>
-        <SModal v-model:visible="showNuevoPlazoModal" sizeHeight="Hsm" size="md">
+        <div class="formaDePago" v-if="paymentWay === 'credit'">
+          <span class="spanFormaDePago">Vencimiento *</span>
+
+          <textarea class="botonesDatos">{{ fechaFinal }}</textarea>
+        </div>
+        <SModal
+          v-model:visible="showNuevoPlazoModal"
+          sizeHeight="Hsm"
+          size="md"
+          v-model.number="nuevoplazo"
+        >
           <template #header>
             <h3 class="TituloModal">Agregar nuevo termino de pago</h3>
           </template>
@@ -149,29 +159,12 @@
             </div></template
           >
         </SModal>
-        <div class="MedioDePago">
+        <div class="MedioDePago" v-if="paymentWay === 'cash'">
           <span class="spanPago">Medio de pago *</span>
           <select name="" class="botonesDatos" placeholder="Seleccionar">
-            <option value="">Instrumento no definido</option>
-            <option value="">Efectivo</option>
-            <option value="">Transferencia debito</option>
-            <option value="">Consignacion bancaria</option>
-            <option value="">Credito ACH</option>
-            <option value="">Debito ACH</option>
-            <option value="">Reversion debito de demanda ACH</option>
-            <option value="">Reversion Credito de demanda ACH</option>
-            <option value="">Credito de demanda ACH</option>
-            <option value="">Debito de demanda ACH</option>
-            <option value="">Credito ahorro</option>
-            <option value="">Credito Debito</option>
-            <option value="">Bookentry credito</option>
-            <option value="">Bookentry debito</option>
-            <option value="">Concentracion de la demanda en efectivo/rembolso credito (CCD)</option>
-            <option value="">Concentracion de la demanda en efectivo/rembolso debito (CCD)</option>
-            <option value="">Credito pago negocio corporativo(CTP)</option>
-            <option value="">Cheque</option>
-            <option value="">Proyecto bancario</option>
-            <option value="">Proyecto bancario certificado</option>
+            <option v-for="option in paymentMethods" :key="option.key" :value="option.key">
+              {{ option.value }}
+            </option>
           </select>
         </div>
       </div>
@@ -180,20 +173,50 @@
 </template>
 <script setup lang="ts">
 import SDropdown from '@/components/SDropdown.vue'
-import { ref, watch } from 'vue'
+import { onBeforeMount, ref, watch } from 'vue'
 import SModal from '@/components/SModal.vue'
 import { defineProps, defineEmits } from 'vue'
+import fetchPaymentMethods from '@/api/fetchPaymentMethods'
+const FechaFinal = ref('')
 
 const showNuevoContactoModal = ref(false)
 const selectedNuevoContacto = ref<string>('')
 const selectedplazo = ref<string | null>(null)
 const paymentWay = ref<string | null>(null)
 const showNuevoPlazoModal = ref(false)
+const nuevoplazo = ref<number | null>(null)
 const selectedPlazo = ref<string>('')
+const fechaFinal = ref<string>('')
+const ListaFecha = ref(false)
 
 watch(selectedPlazo, (nuevoValor06) => {
   if (nuevoValor06 === 'NuevoPlazo') {
     showNuevoPlazoModal.value = true
+  }
+})
+
+watch(selectedNuevoContacto, (nuevoValor06) => {
+  if (nuevoValor06 === 'NuevoContacto') {
+    showNuevoContactoModal.value = true
+  }
+})
+
+watch([selectedPlazo, nuevoplazo], ([plazo, nuevo]) => {
+  let dias = 0
+  if (plazo === 'NuevoPlazo') {
+    dias = nuevo ?? 0
+  } else {
+    dias = parseInt(plazo) || 0
+  }
+
+  if (dias > 0) {
+    const hoy = new Date()
+
+    hoy.setDate(hoy.getDate() + dias)
+    fechaFinal.value = hoy.toISOString().split('T')[0]
+    ListaFecha.value = true
+  } else {
+    fechaFinal.value = ''
   }
 })
 
@@ -204,6 +227,12 @@ function cerrarModalPlazo() {
 function cerrarModalContacto() {
   showNuevoContactoModal.value = false
 }
+
+const paymentMethods = ref<{ key: string; value: string }[]>([])
+
+onBeforeMount(async () => {
+  paymentMethods.value = await fetchPaymentMethods()
+})
 
 const warehouse = ref<string>('01')
 </script>

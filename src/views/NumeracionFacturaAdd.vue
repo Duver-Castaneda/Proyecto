@@ -94,6 +94,7 @@ function toggleChulo() {
   isHidden.value = !isHidden.value
   EsVisible2.value = !EsVisible2.value
 }
+
 </script>
 <style scoped>
 .Principal1 {
