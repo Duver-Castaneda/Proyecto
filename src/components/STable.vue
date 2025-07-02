@@ -60,7 +60,7 @@
             </div>
             =
             <div class="part2">
-              Precio Total * <textarea name="" class="BotonesPart2"></textarea>
+              Precio Total * <input type="number" class="BotonesPart2" v-model="store.inputValue" />
             </div>
           </div>
           <div class="Part1">
@@ -91,9 +91,12 @@
     <td><textarea name="" class="ReferenciaTd" placeholder="Total"></textarea></td>
   </tr>
 </template>
+
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import SModal from './SModal.vue'
+import { useInputStore } from '@/stores/inputstore'
+const store = useInputStore()
 
 const items = ref(['Item A', 'Item B', 'Item C'])
 const selected = ref('')
