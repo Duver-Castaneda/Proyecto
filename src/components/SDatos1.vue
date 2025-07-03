@@ -137,7 +137,6 @@ function mostrarNombre(e) {
 }
 </script>
 <style scoped>
-
 .BotonAdmNumeraciones {
   font-size: 12px;
   background-color: white;

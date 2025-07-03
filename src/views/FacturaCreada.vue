@@ -34,10 +34,12 @@
         <span class="SpanTexto">Por cobrar</span><span class="Span1">${{ store.inputValue }}</span>
       </div>
     </div>
+    <SContainerDatosFactura />
   </div>
 </template>
 <script setup lang="ts">
 import { useInputStore } from '@/stores/inputstore'
+import SContainerDatosFactura from '@/components/SContainerDatosFactura.vue'
 
 const store = useInputStore()
 </script>

@@ -19,11 +19,23 @@
             <option value="">PPT</option>
           </select>
 
-          <textarea name="" id="BuscarId" placeholder="Buscar N° de ID"></textarea>
+          <input
+            name=""
+            id="BuscarId"
+            placeholder="Buscar N° de ID"
+            type="number"
+            v-model="store1.InputCedula"
+          />
         </div>
         <div class="containerName">
           <span class="SpanNombre">Nombre o razon social *</span>
-          <textarea id="texto" rows="4" cols="30" placeholder="Seleccionar Cliente"></textarea>
+          <textarea
+            id="texto"
+            rows="4"
+            cols="30"
+            placeholder="Seleccionar Cliente"
+            v-model="store1.InputCliente"
+          ></textarea>
         </div>
         <div class="divcorreo">
           <span class="spanCorreo">correo * </span><textarea name="" id="correoInput"></textarea>
@@ -86,7 +98,7 @@
                 <span style="display: block">Direccion</span
                 ><textarea class="BotonesParteFinal"></textarea>
                 <span style="display: block">Telefono</span
-                ><textarea class="BotonesParteFinal"></textarea>
+                ><textarea class="BotonesParteFinal" v-model="store1.Telefono"></textarea>
               </div>
             </div>
           </template>
@@ -104,7 +116,7 @@
       <div class="secondcolumn">
         <div class="fecha">
           <span class="spanFecha"> Fecha </span>
-          <input type="date" class="fechas" name="fecha" />
+          <input type="date" class="fechas" name="fecha" v-model="store1.Creacion" />
         </div>
         <div class="formaDePago">
           <span class="spanFormaDePago">Forma de pago *</span>
@@ -178,7 +190,8 @@ import SModal from '@/components/SModal.vue'
 import { defineProps, defineEmits } from 'vue'
 import fetchPaymentMethods from '@/api/fetchPaymentMethods'
 const FechaFinal = ref('')
-
+import { useInputStore } from '@/stores/inputstore'
+const store1 = useInputStore()
 const showNuevoContactoModal = ref(false)
 const selectedNuevoContacto = ref<string>('')
 const selectedplazo = ref<string | null>(null)

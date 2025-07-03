@@ -37,7 +37,9 @@
             >Ten en cuenta que, una vez creado, no podrás cambiar el tipo de ítem.</span
           >
           <div class="Part1">
-            <div class="Lados">Nombre * <textarea name="" class="Botones1"></textarea></div>
+            <div class="Lados">
+              Nombre * <textarea name="" class="Botones1" v-model="store.itemName"></textarea>
+            </div>
             <div class="Lados">
               Unidad de medida *
               <select name="" class="Botones1"></select>
@@ -81,9 +83,15 @@
       </SModal>
     </td>
     <td><textarea name="" class="ReferenciaTd" placeholder="Referencia"></textarea></td>
-    <td><textarea name="" class="ReferenciaTd" placeholder="Precio"></textarea></td>
-    <td><textarea name="" class="ReferenciaTd" placeholder="%"></textarea></td>
-    <td><select name="" class="ImpuestoTd" placeholder="Impuesto"></select></td>
+    <td>
+      <textarea name="" class="ReferenciaTd" placeholder="Precio" v-model="store.precio"></textarea>
+    </td>
+    <td>
+      <textarea name="" class="ReferenciaTd" placeholder="%" v-model="store.Descuento"></textarea>
+    </td>
+    <td>
+      <select name="" class="ImpuestoTd" placeholder="Impuesto" v-model="store.impuesto"></select>
+    </td>
     <td>
       <textarea name="" class="ReferenciaTd" id="Descripciontd"></textarea>
     </td>
