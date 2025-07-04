@@ -49,6 +49,70 @@
         </tbody>
       </table>
     </div>
+
+    <div class="SignsTotals">
+      <div class="ContainersTotals">
+        <div class="IMGContainer"></div>
+        <span class="SpanElaborado">ELABORADO POR</span>
+      </div>
+      <div class="ContainersTotals1">
+        <table>
+          <tbody>
+            <tr>
+              <td class="Totals">Subtotal</td>
+              <td class="Totals1">$</td>
+            </tr>
+            <tr>
+              <td class="Totals">Descuento</td>
+              <td class="Totals1">${{ store1.Descuento }}</td>
+            </tr>
+            <tr>
+              <td class="Totals">Subtotal</td>
+              <td class="Totals1">$</td>
+            </tr>
+            <tr>
+              <td class="Totals" style="border-top: 1px solid rgb(229, 231, 235)">
+                <span style="font-size: 24px">Total</span>
+              </td>
+              <td class="Totals1" style="border-top: 1px solid rgb(229, 231, 235)">
+                <span style="font-size: 24px">${{ store1.inputValue }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="InformacionAdicional">
+      <span style="color: black">Informacion Adicional</span>
+      <table style="width: 100%">
+        <tbody>
+          <tr>
+            <td class="InfoAdd1">Forma de pago</td>
+            <td class="InfoAdd"></td>
+          </tr>
+          <tr>
+            <td class="InfoAdd1">Medio de pago</td>
+            <td class="InfoAdd"></td>
+          </tr>
+          <tr>
+            <td class="InfoAdd1">Tipo de factura</td>
+            <td class="InfoAdd">Factura de venta</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="Notas">
+      <div class="ContainersNotas1">
+        <span class="TitleNotas1">Terminos Y condiciones</span
+        ><span class="SpanNotaCont"
+          >Este documento se asimila en todos sus efectos a una letra de cambio de conformidad con
+          el Art. 774 del código de comercio. Autorizo que en caso de incumplimiento de esta
+          obligación sea reportado a las centrales de riesgo, se cobraran intereses por mora</span
+        >
+      </div>
+      <div class="ContainersNotas"><span>Nota</span><span></span></div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -56,14 +120,108 @@ import { useInputStore } from '@/stores/inputstore'
 import StableHead from './StableHead.vue'
 const store1 = useInputStore()
 </script>
+
 <style scoped>
+.TitleNotas1 {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500px;
+}
+.SpanNotaCont {
+  display: block;
+  font-size: 12px;
+}
+.ContainersNotas1 {
+  width: 55%;
+  padding-top: 32px;
+  display: block;
+  color: rgb(118, 118, 118);
+}
+
+.ContainersNotas {
+  width: 40%;
+  padding-top: 32px;
+  display: block;
+  color: rgb(118, 118, 118);
+}
+
+.Notas {
+  display: flex;
+  justify-content: space-between;
+  height: 112px;
+}
+
+.InfoAdd1 {
+  width: 40%;
+  padding: 10px 1px 10px 1px;
+  border-bottom: 1px solid rgb(229, 231, 235);
+  font-size: 12px;
+  color: rgb(107, 114, 128);
+}
+.InfoAdd {
+  width: 60%;
+  padding: 10px 1px 10px 1px;
+  border-bottom: 1px solid rgb(229, 231, 235);
+  font-size: 12px;
+  color: rgb(88, 88, 96);
+}
+.InformacionAdicional {
+  width: 448px;
+  height: 171px;
+}
+.Totals {
+  padding: 3px 12px 3px 24px;
+  color: rgb(88, 89, 95);
+  font-size: 16px;
+}
+.Totals1 {
+  padding: 3px 12px 3px 16px;
+  color: rgb(88, 89, 95);
+  font-size: 16px;
+}
+
+.SpanElaborado {
+  display: flex;
+  justify-content: center;
+  color: rgb(88, 89, 95);
+  font-size: 14px;
+}
+.IMGContainer {
+  width: 100%;
+  display: block;
+  padding: 9px 53px 9px 53px;
+  height: 70%;
+  border-bottom: 2px solid rgb(229, 231, 235);
+}
+.ContainersTotals {
+  display: block;
+  width: 30%;
+  height: 100%;
+
+  justify-content: center;
+}
+.ContainersTotals1 {
+  display: block;
+  width: 200px;
+  height: 134px;
+
+  justify-content: center;
+}
+.SignsTotals {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 135px;
+  margin: 28px 0px 28px 0px;
+}
 .TablaDeItems {
   margin-top: 40px;
 }
 .td1 {
   width: 15%;
 }
-td {
+p td {
   border-bottom: 1px solid rgb(229, 231, 235);
   padding: 8px 1px 8px 1px;
 }

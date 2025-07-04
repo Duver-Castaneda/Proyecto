@@ -35,6 +35,14 @@
       </div>
     </div>
     <SContainerDatosFactura />
+
+    <div class="Inventory">
+      <div class="ContainersInventory">
+        <div class="DivsInventory1"><span>Lista de precios</span><span></span></div>
+        <div class="DivsInventory"><span>Bodega</span><span></span></div>
+      </div>
+      <div class="ContainersInventory"></div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -44,6 +52,28 @@ import SContainerDatosFactura from '@/components/SContainerDatosFactura.vue'
 const store = useInputStore()
 </script>
 <style scoped>
+.DivsInventory {
+  display: flex;
+  justify-content: space-between;
+}
+
+.DivsInventory1 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid (229, 231, 235);
+}
+.ContainersInventory {
+  width: 45%;
+  height: 128px;
+  background-color: white;
+  padding: 24px 40px 24px 40px;
+}
+.Inventory {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
 .selectActions {
   width: 20px;
   height: 32px;
