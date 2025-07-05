@@ -25,7 +25,7 @@ function close() {
 import { computed } from 'vue'
 
 type ModalSize = 'sm' | 'md' | 'ml' | 'lg'
-type ModalSizeHeight = 'Hsm' | 'Hmd' | 'Hml' | 'Hlg' | 'Hms'
+type ModalSizeHeight = 'Hmsm' | 'Hsm' | 'Hmd' | 'Hml' | 'Hlg' | 'Hms'
 
 const props = defineProps<{
   sizeHeight?: ModalSizeHeight
@@ -45,6 +45,7 @@ const sizeClass = computed(() => {
 
 const sizeHeightClass = computed(() => {
   const sizeHeightMap: Record<ModalSizeHeight, string> = {
+    Hmsm: 'modal-Hmsm',
     Hsm: 'modal-Hsm',
     Hms: 'modal-Hms',
     Hmd: 'modal-Hmd',
@@ -91,6 +92,7 @@ const sizeHeightClass = computed(() => {
   max-height: 250px;
   overflow-y: auto;
 }
+
 .modal-sm {
   width: 380px;
 }
@@ -102,6 +104,10 @@ const sizeHeightClass = computed(() => {
 }
 .modal-lg {
   width: 600px;
+}
+
+.modal-Hmsm {
+  height: 220px;
 }
 
 .modal-Hsm {
