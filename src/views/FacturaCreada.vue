@@ -125,7 +125,7 @@
             contables y sus códigos aquí.</span
           >
         </div>
-        <table style="width: 100%; padding: 16px">
+        <table style="width: 100%; padding: 16px; border-collapse: collapse; margin-top: 20px">
           <thead>
             <tr>
               <th class="TbContabilidad" style="width: 10%">Tercero</th>
@@ -136,6 +136,32 @@
               <th class="TbContabilidad" style="width: 12%">Credito</th>
             </tr>
           </thead>
+          <tbody>
+            <tr>
+              <td class="td2">Sebastian</td>
+              <td class="td2">---</td>
+              <td class="td2">Cuentas por cobrar clientes nacionales</td>
+              <td class="td1"></td>
+              <td class="td1">{{ store.inputValue }}</td>
+              <td class="td1"></td>
+            </tr>
+            <tr>
+              <td class="td2">Sebastian</td>
+              <td class="td2">---</td>
+              <td class="td2">Ventas</td>
+              <td class="td1"></td>
+              <td class="td1"></td>
+              <td class="td1">{{ store.inputValue }}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="td1">Total</td>
+              <td class="td1">{{ store.inputValue }}</td>
+              <td class="td1">{{ store.inputValue }}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -182,6 +208,19 @@ const store = useInputStore()
 const TipoDeItem = ref<'Pagos' | 'Contabilidad' | ''>('')
 </script>
 <style scoped>
+.td1 {
+  text-align: center;
+  border: 1px solid rgb(229, 231, 235);
+  color: rgb(51, 65, 85);
+  font-size: 14px;
+}
+
+.td2 {
+  text-align: center;
+  border-bottom: 1px solid rgb(229, 231, 235);
+  color: rgb(51, 65, 85);
+  font-size: 14x;
+}
 .Lista {
   width: 100%;
   border-bottom: 1px solid rgb(229, 231, 235);
@@ -289,7 +328,8 @@ const TipoDeItem = ref<'Pagos' | 'Contabilidad' | ''>('')
 }
 .Pagos {
   width: 100%;
-  height: 258px;
+  min-height: 240px;
+  max-height: 400px;
   background-color: white;
   margin-top: 20px;
   padding: 8px 16px 16px 16px;

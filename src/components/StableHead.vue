@@ -1,5 +1,5 @@
 <template>
-  <thead style="background-color: #f4f5fb" class="thead">
+  <thead style="background-color: #f4f5fb" class="thead" ;>
     <tr>
       <th class="item">Item</th>
       <th class="Referencia">Referencia</th>
@@ -14,6 +14,10 @@
 </template>
 <script setup lang="ts"></script>
 <style scoped>
+.thead {
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
+}
 .item {
   width: 10% !important;
   padding-bottom: 12px;

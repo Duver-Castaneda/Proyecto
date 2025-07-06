@@ -33,7 +33,7 @@
     </div>
 
     <div class="TablaDeItems">
-      <table>
+      <table style="border-collapse: collapse">
         <StableHead />
         <tbody>
           <tr>
