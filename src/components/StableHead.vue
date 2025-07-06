@@ -1,5 +1,5 @@
 <template>
-  <thead style="background-color: #f4f5fb" class="thead" ;>
+  <thead style="background-color: #f4f5fb" class="thead">
     <tr>
       <th class="item">Item</th>
       <th class="Referencia">Referencia</th>
